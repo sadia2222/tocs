@@ -7,6 +7,24 @@ pipeline {
                 git 'https://github.com/sadia2222/tocs.git'
             }
         }
+        stage('Build') {
+            steps {
+                sh 'chmod +x build.sh'
+                sh './build.sh'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'chmod +x test.sh'
+                sh './test.sh'
+            }
+        }
+        stage('Package') {
+            steps {
+                sh 'chmod +x package.sh'
+                sh './package.sh'
+            }
+        }
         stage('Deploy') {
             steps {
                 sh 'chmod +x deploy.sh'
